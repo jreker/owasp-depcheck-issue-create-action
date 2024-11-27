@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 const severityOrder = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW', 'INFO'];
-const minimumSeverity = core.getInput('minimum-severity'); // Einträge ab dieser Schwere aufnehmen
+let minimumSeverity = "HIGH"; // Einträge ab dieser Schwere aufnehmen
 
 
 function sortBySeverity(vulnerabilities) {
@@ -89,6 +89,8 @@ async function run() {
         
         // GitHub Token aus Eingaben holen
         const token = core.getInput('repo-token');
+
+        minimumSeverity = core.getInput('minimum-severity')
 
         labels = core.getInput('issue-labels') ? core.getInput('issue-labels').split(',') : [];
         labels.push("owasp-autoscan", "vulnerabilities")

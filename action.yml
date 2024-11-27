@@ -17,5 +17,5 @@ outputs:
   issue-url:
     description: 'URL of the created issue'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'index.js'
