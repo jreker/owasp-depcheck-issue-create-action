@@ -100,7 +100,7 @@ async function run() {
         const title = "🆘 Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
 
-
+        labels = [];
 
         const body = generateIssueBody(findings);
 
@@ -118,6 +118,7 @@ async function run() {
         const response = await octokit.rest.issues.create({
             owner,
             repo,
+            labels,
             title,
             body
         });
