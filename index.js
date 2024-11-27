@@ -121,9 +121,9 @@ async function run() {
 
         // Issue erstellen
         const response = await octokit.rest.issues.create({
-            owner,
-            repo,
-            title: "test",
+            owner: owner,
+            repo: repo,
+            title: title,
         });
 
         core.info(response.data)
