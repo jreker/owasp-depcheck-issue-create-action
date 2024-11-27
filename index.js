@@ -118,9 +118,7 @@ async function run() {
         const response = await octokit.rest.issues.create({
             owner,
             repo,
-            labels,
             title,
-            body
         });
 
         core.setOutput('issue-url', response.data.html_url);
