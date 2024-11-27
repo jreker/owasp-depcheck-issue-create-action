@@ -83,22 +83,28 @@ function generateIssueBody(findings) {
 async function run() {
     try {
 
-
-
+        core.info("issue-labels:", core.getInput('issue-labels'));
+        core.info("minimum-severity", minimumSeverity);
+        core.info("report-file", core.getInput('report-file'));
+        
         // GitHub Token aus Eingaben holen
         const token = core.getInput('repo-token');
 
         labels = core.getInput('issue-labels') ? core.getInput('issue-labels').split(',') : [];
         labels.push("owasp-autoscan", "vulnerabilities")
-        
+        core.debug("Labels:", labels)        
 
         const findings = parseDependencyCheckReport(core.getInput('report-file'));
+        core.debug(findings);
         const title = "🆘 Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
 
 
 
         const body = generateIssueBody(findings);
+
+        core.debug("Issue-Body", body);
+
         // GitHub API Client initialisieren
         const octokit = github.getOctokit(token);
 
