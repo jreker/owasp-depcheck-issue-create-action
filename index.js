@@ -83,9 +83,9 @@ function generateIssueBody(findings) {
 async function run() {
     try {
 
-        core.info("issue-labels:", core.getInput('issue-labels'));
-        core.info("minimum-severity", minimumSeverity);
-        core.info("report-file", core.getInput('report-file'));
+        core.info("issue-labels:" + core.getInput('issue-labels'));
+        core.info("minimum-severity:" + minimumSeverity);
+        core.info("report-file:" + core.getInput('report-file'));
         
         // GitHub Token aus Eingaben holen
         const token = core.getInput('repo-token');
