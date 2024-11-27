@@ -114,6 +114,10 @@ async function run() {
         core.debug("owner:" + owner);
         core.debug("repo:" + repo)
 
+        core.info(octokit)
+        core.info(octokit.rest)
+        core.info(octokit.rest.issues)
+
         // Issue erstellen
         const response = await octokit.rest.issues.create({
             owner,
