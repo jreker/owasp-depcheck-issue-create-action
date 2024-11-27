@@ -40,11 +40,11 @@ function parseDependencyCheckReport(filePath) {
 
 
 const severityIcons = {
-    CRITICAL: '🔥',
-    HIGH: '⚠️',
-    MEDIUM: '🔶',
-    LOW: 'ℹ️',
-    INFO: '💡',
+    CRITICAL: 'X',
+    HIGH: 'X',
+    MEDIUM: 'X',
+    LOW: 'X',
+    INFO: 'X',
 };
 
 function getSeverityIcon(severity) {
