@@ -99,9 +99,6 @@ async function run() {
         const findings = parseDependencyCheckReport(core.getInput('report-file'));
         const title = "Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
-
-        labels = [];
-
         const body = generateIssueBody(findings);
 
         core.debug("Issue-Body" + body);
@@ -112,18 +109,15 @@ async function run() {
         // Repository und Owner holen
         const { owner, repo } = github.context.repo;
         core.debug("owner:" + owner);
-        core.debug("repo:" + repo)
-
-        core.info(octokit)
-        core.info(octokit.rest)
-        core.info(octokit.rest.issues)
-        let title2 = "test"
+        core.debug("repo:" + repo);
 
         // Issue erstellen
         const response = await octokit.rest.issues.create({
             owner: owner,
             repo: repo,
             title: title,
+            body: body,
+            labels: labels
         });
 
         core.info(response.data)
