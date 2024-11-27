@@ -97,7 +97,7 @@ async function run() {
         core.debug("Labels:" + labels)        
 
         const findings = parseDependencyCheckReport(core.getInput('report-file'));
-        const title = "🆘 Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
+        const title = "Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
 
         labels = [];
