@@ -108,9 +108,11 @@ async function run() {
 
         // GitHub API Client initialisieren
         const octokit = github.getOctokit(token);
-
+        core.info("octokit initialized")
         // Repository und Owner holen
         const { owner, repo } = github.context.repo;
+        core.debug("owner:" + owner);
+        core.debug("repo:" + repo)
 
         // Issue erstellen
         const response = await octokit.rest.issues.create({
