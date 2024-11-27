@@ -117,13 +117,13 @@ async function run() {
         core.info(octokit)
         core.info(octokit.rest)
         core.info(octokit.rest.issues)
-        title = "test"
+        let title2 = "test"
 
         // Issue erstellen
         const response = await octokit.rest.issues.create({
             owner,
             repo,
-            title,
+            title2,
         });
 
         core.info(response.data)
