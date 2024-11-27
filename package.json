@@ -1,0 +1,29 @@
+{
+  "name": "owasp-depcheck-issue-create-action",
+  "version": "0.1",
+  "description": "This is a github action that creates an issue based on owas dependency check report.",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "owasp",
+    "dependency-checker",
+    "issue-creator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jreker/owasp-depcheck-issue-create-action/.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jreker/owasp-depcheck-issue-create-action/issues"
+  },
+  "homepage": "https://github.com/jreker/owasp-depcheck-issue-create-action#readme",
+  "author": "Johannes Reker",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  }
+}
