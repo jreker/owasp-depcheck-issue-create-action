@@ -92,7 +92,7 @@ async function run() {
         labels.push("owasp-autoscan", "vulnerabilities")
         
 
-        const findings = parseDependencyCheckReport('./dependency-check-report.json');
+        const findings = parseDependencyCheckReport(core.getInput('report-file'));
         const title = "🆘 Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
 

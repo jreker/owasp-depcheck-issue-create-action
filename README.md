@@ -18,7 +18,7 @@ Required parameters:
 - `repo-token`: The token that can access the repo to create the issue
 - `issue-labels`: The labels that will be added to the issue
 - `minimum-severity`: All vulnerabilities higher or equal will be added to the issue
-
+- `report-file`: Path to of the json report file relative to the project root.
 
 
 ## Usage
@@ -53,4 +53,5 @@ jobs:
           repo-token: ${secrets.GITHUB_TOKEN} # create that token as secret inside the repo
           issue-labels: 'bug'
           minimum-severity: 'CRITICAL' 
+          report-file: 'dependency-check-report.json'
 ```

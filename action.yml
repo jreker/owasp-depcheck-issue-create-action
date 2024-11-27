@@ -10,6 +10,9 @@ inputs:
   minimum-severity:
     description: 'The entries with this severity or above will be shown inside the issue.'
     required: true
+  report-file:
+    description: The filepath of the json report relative to the project folder.
+    required: true
 outputs:
   issue-url:
     description: 'URL of the created issue'
