@@ -94,10 +94,9 @@ async function run() {
 
         labels = core.getInput('issue-labels') ? core.getInput('issue-labels').split(',') : [];
         labels.push("owasp-autoscan", "vulnerabilities")
-        core.debug("Labels:", labels)        
+        core.debug("Labels:" + labels)        
 
         const findings = parseDependencyCheckReport(core.getInput('report-file'));
-        core.debug(findings);
         const title = "🆘 Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
         
 
@@ -105,7 +104,7 @@ async function run() {
 
         const body = generateIssueBody(findings);
 
-        core.debug("Issue-Body", body);
+        core.debug("Issue-Body" + body);
 
         // GitHub API Client initialisieren
         const octokit = github.getOctokit(token);
@@ -118,8 +117,7 @@ async function run() {
             owner,
             repo,
             title,
-            body,
-            labels,
+            body
         });
 
         core.setOutput('issue-url', response.data.html_url);
