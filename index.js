@@ -117,7 +117,7 @@ async function run() {
             repo: repo,
             title: title,
             body: body,
-            labels: "owasp-depscan",
+            labels: ["owasp-depscan"],
         });
 
         core.info(response.data)
