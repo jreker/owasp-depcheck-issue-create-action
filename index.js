@@ -117,6 +117,7 @@ async function run() {
         core.info(octokit)
         core.info(octokit.rest)
         core.info(octokit.rest.issues)
+        title = "test"
 
         // Issue erstellen
         const response = await octokit.rest.issues.create({
@@ -124,6 +125,8 @@ async function run() {
             repo,
             title,
         });
+
+        core.info(response.data)
 
         core.setOutput('issue-url', response.data.html_url);
         console.log(`Issue created: ${response.data.html_url}`);
