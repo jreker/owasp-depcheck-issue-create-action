@@ -40,9 +40,9 @@ function parseDependencyCheckReport(filePath) {
 
 
 const severityIcons = {
-    CRITICAL: 'X',
-    HIGH: 'X',
-    MEDIUM: 'X',
+    CRITICAL: ':fire:',
+    HIGH: ':warning:',
+    MEDIUM: ':orange_circle:',
     LOW: 'X',
     INFO: 'X',
 };
@@ -59,7 +59,7 @@ function generateVulnEntry(entries) {
     return entries
         //.map((x) => `- [ ] **${getSeverityIcon(x.severity)} ${x.severity}: ${x.name}** \n ${x.description} (Severity: ${x.severity})`)
        // .map((x) => ` **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} |\n`)
-        .map((x) => ` <details><summary>**${x.name} :: ${x.severity}</summary><detail> ${x.description}</details> \n `)
+        .map((x) => ` <details><summary><b>${x.name} :: ${x.severity} ${getSeverityIcon(x.severity)}</b></summary><detail> ${x.description}</details> \n `)
         .join('\n');
 }
 
@@ -77,7 +77,7 @@ function generateIssueBody(findings) {
     
 
     findings.forEach((finding) => {
-        body += `${finding.fileName} |`;
+        body += `## ${finding.fileName} |`;
        body += `${generateVulnEntry(finding.vulnerabilities)}`;
 
        // body += `| <ul><li>- [ ]</ul></li> | ${finding.fileName} | ${generateVulnEntry(finding.vulnerabilities)}`;
