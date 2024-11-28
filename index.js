@@ -59,7 +59,7 @@ function generateVulnEntry(entries) {
     return entries
         //.map((x) => `- [ ] **${getSeverityIcon(x.severity)} ${x.severity}: ${x.name}** \n ${x.description} (Severity: ${x.severity})`)
        // .map((x) => ` **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} |\n`)
-        .map((x) => ` <detail><summary>**${x.name} :: ${x.severity}</summary><detail> ${x.description}</detail> \n `)
+        .map((x) => ` <details><summary>**${x.name} :: ${x.severity}</summary><detail> ${x.description}</details> \n `)
         .join('\n');
 }
 
