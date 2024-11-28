@@ -77,7 +77,7 @@ function generateIssueBody(findings) {
     
 
     findings.forEach((finding) => {
-        body += `## ${finding.fileName}\n`;
+        body += `\n ## ${finding.fileName}\n`;
        body += `${generateVulnEntry(finding.vulnerabilities)}`;
 
        // body += `| <ul><li>- [ ]</ul></li> | ${finding.fileName} | ${generateVulnEntry(finding.vulnerabilities)}`;
