@@ -59,7 +59,7 @@ function generateVulnEntry(entries) {
     return entries
         //.map((x) => `- [ ] **${getSeverityIcon(x.severity)} ${x.severity}: ${x.name}** \n ${x.description} (Severity: ${x.severity})`)
        // .map((x) => ` **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} |\n`)
-        .map((x) => ` <details><summary><b>${x.name} :: ${x.severity} ${getSeverityIcon(x.severity)}</b></summary><detail> ${x.description}</details> \n `)
+        .map((x) => ` <details><summary><b>${x.name} :: ${x.severity} :: ${x.cvssv3.baseScore} ${getSeverityIcon(x.severity)}</b></summary><detail> ${x.description}</details> \n `)
         .join('\n');
 }
 
@@ -67,7 +67,7 @@ function generateIssueBody(findings) {
     let body = `# Dependency Vulnerability Report\n\n`;
 
     const totalDependencies = findings.length;
-    body += `**Minimum Severity: ${minimumSeverity}\n` 
+    body += `**Minimum Severity:** ${minimumSeverity}\n` 
     body += `**Total Vulnerabilities:** ${countVulnerabilities(findings)}\n`;
     body += `**Total Dependencies:** ${totalDependencies}\n`;
 
