@@ -58,7 +58,8 @@ function countVulnerabilities(findings) {
 function generateVulnEntry(entries) {
     return entries
         //.map((x) => `- [ ] **${getSeverityIcon(x.severity)} ${x.severity}: ${x.name}** \n ${x.description} (Severity: ${x.severity})`)
-        .map((x) => `<details><summary>${x.name}</summary> -[ ] Done?   **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} </detail>`)
+       // .map((x) => ` **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} |\n`)
+        .map((x) => ` <detail><summary>**${x.name} :: ${x.severity}</summary><detail> ${x.description}</detail> \n `)
         .join('\n');
 }
 
@@ -76,11 +77,13 @@ function generateIssueBody(findings) {
     
 
     findings.forEach((finding) => {
-        body += ` ## ${finding.fileName}`;
-       
-        body += ` ${generateVulnEntry(finding.vulnerabilities)}`;
+        body += `${finding.fileName} |`;
+       body += `${generateVulnEntry(finding.vulnerabilities)}`;
+
+       // body += `| <ul><li>- [ ]</ul></li> | ${finding.fileName} | ${generateVulnEntry(finding.vulnerabilities)}`;
     });
 
+    body += "";
     return body;
 }
 
