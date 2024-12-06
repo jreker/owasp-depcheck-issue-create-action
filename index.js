@@ -57,8 +57,6 @@ function countVulnerabilities(findings) {
 
 function generateVulnEntry(entries) {
     return entries
-        //.map((x) => `- [ ] **${getSeverityIcon(x.severity)} ${x.severity}: ${x.name}** \n ${x.description} (Severity: ${x.severity})`)
-       // .map((x) => ` **${getSeverityIcon(x.severity)} ${x.severity} | ${x.name} ${x.description} |\n`)
         .map((x) => ` <details><summary><b>${x.name} :: ${x.severity} :: ${x.cvssv3 ? x.cvssv3.baseScore : ""} ${getSeverityIcon(x.severity)}</b></summary><detail> ${x.description}</details> \n `)
         .join('\n');
 }
@@ -71,16 +69,9 @@ function generateIssueBody(findings) {
     body += `**Total Vulnerabilities:** ${countVulnerabilities(findings)}\n`;
     body += `**Total Dependencies:** ${totalDependencies}\n`;
 
-    //body += `| Done | Filename | Severity | Description |\n`
-    //body += `| ----- | --------- | --------- | ----------- |\n`
-
-    
-
     findings.forEach((finding) => {
         body += `\n ## ${finding.fileName}\n`;
        body += `${generateVulnEntry(finding.vulnerabilities)}`;
-
-       // body += `| <ul><li>- [ ]</ul></li> | ${finding.fileName} | ${generateVulnEntry(finding.vulnerabilities)}`;
     });
 
     body += "";
@@ -106,7 +97,7 @@ async function run() {
         core.debug("Labels:" + labels)        
 
         const findings = parseDependencyCheckReport(core.getInput('report-file'));
-        const title = "Vulnerability Report " + " - Found: " + countVulnerabilities(findings);
+        const title = "Vulnerability Report " + core.getInput("issue-name") + " - Found: " + countVulnerabilities(findings);
         
         const body = generateIssueBody(findings);
 

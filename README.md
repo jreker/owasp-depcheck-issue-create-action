@@ -19,6 +19,7 @@ Required parameters:
 - `issue-labels`: The labels that will be added to the issue
 - `minimum-severity`: All vulnerabilities higher or equal will be added to the issue
 - `report-file`: Path to of the json report file relative to the project root.
+- `issue-name`: This value will be added to the name of the issue.
 
 
 ## Usage

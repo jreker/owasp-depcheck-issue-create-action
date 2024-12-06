@@ -13,6 +13,9 @@ inputs:
   report-file:
     description: The filepath of the json report relative to the project folder.
     required: true
+  issue-name:
+    description: The Name of the Issue will be merged with the default name "Vulnerability Report <<issue-name>> Found 40"
+    required: false
 outputs:
   issue-url:
     description: 'URL of the created issue'
